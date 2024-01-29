@@ -4,7 +4,7 @@ simple react app with good practices
 
 ## Table of Contents
 
-- Typescript
+- Vite + React + TypeScript
 - Routing with React Router
 - HTTP requests with Axios
 - HTTP State management with React Query
