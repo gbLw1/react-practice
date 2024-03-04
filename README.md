@@ -5,11 +5,10 @@ simple react app with good practices
 ## Table of Contents
 
 - [x] Vite + React + TypeScript
-- [x] Routing with React Router
-- [ ] HTTP requests with Axios
-- [ ] HTTP State management with React Query
-- [ ] Form validation with [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
-- [ ] Form management with React Hook Form
-- [ ] Styling with Tailwind CSS
-- [ ] URL state management with query strings
+- [x] Routing with [React Router](https://reactrouter.com/en/main)
+- [ ] HTTP requests with [Axios](https://axios-http.com/)
+- [ ] HTTP State management with [React Query](https://tanstack.com/query/latest)
+- [ ] Form management & validation with [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
+- [ ] Styling with [Tailwind CSS](https://tailwindcss.com/)
+- [ ] URL state management with query params
 
