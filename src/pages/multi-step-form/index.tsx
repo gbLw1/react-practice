@@ -1,31 +1,39 @@
 import FormLayout from "../../components/FormLayout";
 import { useState } from "react";
 import { useMultiStepFormStore } from "../../stores/multi-step-form-store";
+import { useForm } from "react-hook-form";
+
+interface FormValues {
+  name: string;
+  email: string;
+  age: number;
+}
 
 export default function MultiStepForm() {
   const { name, email, age } = useMultiStepFormStore();
   const [step, setStep] = useState<0 | 1 | 2 | 3>(0);
 
+  const { handleSubmit, register } = useForm<FormValues>();
+
+  console.log("rendered");
+
   return (
     <FormLayout>
       {step === 0 && (
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
+          onSubmit={handleSubmit((data) => {
+            useMultiStepFormStore.setState({ name: data.name });
             setStep(1);
-          }}
+          })}
           className="flex items-center"
         >
           <input
-            value={name}
-            onChange={({ target: { value } }) =>
-              useMultiStepFormStore.setState({ name: value })
-            }
+            {...register("name")}
             placeholder="Name"
             className="border border-gray-300 rounded-md p-2"
           />
           <button
-            onClick={() => setStep(1)}
+            type="submit"
             className="flex justify-center items-center ms-2 hover:bg-blue-700 border border-blue-700 text-blue-700 hover:text-white px-4 py-2 rounded-md active:bg-blue-800 font-medium"
           >
             Next
@@ -35,22 +43,19 @@ export default function MultiStepForm() {
 
       {step === 1 && (
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
+          onSubmit={handleSubmit((data) => {
+            useMultiStepFormStore.setState({ email: data.email });
             setStep(2);
-          }}
+          })}
           className="flex items-center"
         >
           <input
-            value={email}
-            onChange={({ target: { value } }) =>
-              useMultiStepFormStore.setState({ email: value })
-            }
+            {...register("email")}
             placeholder="email"
             className="border border-gray-300 rounded-md p-2"
           />
           <button
-            onClick={() => setStep(2)}
+            type="submit"
             className="flex justify-center items-center ms-2 hover:bg-blue-700 border border-blue-700 text-blue-700 hover:text-white px-4 py-2 rounded-md active:bg-blue-800 font-medium"
           >
             Next
@@ -61,16 +66,13 @@ export default function MultiStepForm() {
       {step === 2 && (
         <form
           className="flex items-center"
-          onSubmit={(e) => {
-            e.preventDefault();
+          onSubmit={handleSubmit((data) => {
+            useMultiStepFormStore.setState({ age: data.age });
             setStep(3);
-          }}
+          })}
         >
           <input
-            value={age}
-            onChange={({ target: { value } }) =>
-              useMultiStepFormStore.setState({ age: parseInt(value) })
-            }
+            {...register("age")}
             placeholder="age"
             className="border border-gray-300 rounded-md p-2"
           />
