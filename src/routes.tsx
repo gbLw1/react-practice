@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Products } from "./pages";
+import { Home } from "./pages";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Products />,
+    element: <Home />,
   },
 ]);
