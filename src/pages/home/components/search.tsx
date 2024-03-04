@@ -1,12 +1,16 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FaSearch, FaShare } from "react-icons/fa";
 import { MdClear } from "react-icons/md";
 import { useSearchParams } from "react-router-dom";
+import { z } from "zod";
 
-interface FormValues {
-  search: string;
-}
+const searchSchema = z.object({
+  search: z.string().nonempty("Please enter a search term"),
+});
+
+type FormValues = z.infer<typeof searchSchema>;
 
 export const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -18,6 +22,7 @@ export const Search = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>({
+    resolver: zodResolver(searchSchema),
     values: {
       search: querySearch,
     },
@@ -48,23 +53,29 @@ export const Search = () => {
   return (
     <form
       onSubmit={handleSubmit(applyFilter)}
-      className="flex items-center mb-4"
+      className="flex items-start mb-4"
     >
-      <div className="relative flex items-center">
-        <input
-          type="text"
-          {...register("search")}
-          className="border border-gray-300 rounded-md p-2 pe-7"
-          placeholder="Search for a repo"
-        />
-        {querySearch && (
-          <button
-            type="button"
-            onClick={removeFilter}
-            className="absolute right-0 text-red-700 rounded-md h-[25px] w-[25px] me-1"
-          >
-            <MdClear className="w-[25px] h-[25px]" />
-          </button>
+      <div className="flex flex-col">
+        <div className="relative flex items-center">
+          <input
+            type="text"
+            {...register("search")}
+            className="border border-gray-300 rounded-md p-2 pe-7"
+            placeholder="Search for a repo"
+          />
+          {querySearch && (
+            <button
+              type="button"
+              onClick={removeFilter}
+              className="absolute right-0 text-red-700 rounded-md h-[25px] w-[25px] me-1"
+            >
+              <MdClear className="w-[25px] h-[25px]" />
+            </button>
+          )}
+        </div>
+
+        {errors.search && (
+          <p className="text-red-500 mt-1">{errors.search.message}</p>
         )}
       </div>
 
