@@ -9,6 +9,6 @@ simple react app with good practices
 - [ ] HTTP requests with [Axios](https://axios-http.com/)
 - [ ] HTTP State management with [React Query](https://tanstack.com/query/latest)
 - [ ] Form management & validation with [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
-- [ ] Styling with [Tailwind CSS](https://tailwindcss.com/)
+- [ ] Styling with [Tailwind CSS](https://tailwindcss.com/) + [Flowbite React](https://www.flowbite-react.com/)
 - [ ] URL state management with query params
 
