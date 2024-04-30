@@ -1,16 +1,15 @@
 import { create } from "zustand";
 
 type AuthStore = {
-  user: string;
+  email: string;
+  setEmail: (email: string) => void;
   password: string;
-  step: number;
+  setPassword: (password: string) => void;
 };
 
 export const useAuthStore = create<AuthStore>()((set) => ({
-  user: "",
+  email: "",
+  setEmail: (email) => set({ email }),
   password: "",
-  step: 0,
-  setUser: (user: string) => set({ user }),
-  setPassword: (password: string) => set({ password }),
-  setStep: (step: number) => set({ step }),
+  setPassword: (password) => set({ password }),
 }));
