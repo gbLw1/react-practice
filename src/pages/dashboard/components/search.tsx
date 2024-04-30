@@ -46,7 +46,7 @@ export const Search = () => {
     const url = window.location.href;
 
     navigator.clipboard.writeText(url).then(() => {
-      toast.success("Results copied to clipboard");
+      toast.success("Search results link copied to clipboard");
     });
   }
 

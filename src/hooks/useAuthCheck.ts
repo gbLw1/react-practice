@@ -1,4 +1,5 @@
 import { AuthModel } from "../interfaces/auth.model";
+import { useRouteHistoryStore } from "../stores/route-history.store";
 
 export interface AuthValidation {
   hasToken: boolean;
@@ -12,6 +13,11 @@ function tokenIsExpired(tokenExpirationDate: string): boolean {
 }
 
 export const useAuthCheck = (): AuthValidation => {
+  const { redirect, setRedirect } = useRouteHistoryStore();
+  if (!redirect) {
+    setRedirect(window.location.pathname + window.location.search);
+  }
+
   const data: AuthValidation = { expired: false, hasToken: false };
   const authCache: string | null = sessionStorage.getItem("auth");
 

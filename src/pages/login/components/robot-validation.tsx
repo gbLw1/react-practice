@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "../../../stores/auth.store";
+import { useRouteHistoryStore } from "../../../stores/route-history.store";
 
 interface FormValues {
   imNotARobot: boolean;
@@ -9,6 +11,9 @@ interface FormValues {
 
 export const RobotValidation: React.FC = () => {
   const navigate = useNavigate();
+
+  const { redirect, setRedirect } = useRouteHistoryStore();
+  const { email } = useAuthStore();
 
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -23,6 +28,12 @@ export const RobotValidation: React.FC = () => {
 
     setTimeout(() => {
       if (data.imNotARobot) {
+        if (!email) {
+          toast.error("Not so fast, you need to login first");
+          navigate("/login");
+          return;
+        }
+
         sessionStorage.setItem(
           "auth",
           JSON.stringify({
@@ -31,8 +42,15 @@ export const RobotValidation: React.FC = () => {
           }),
         );
 
+        toast.success("Welcome to the dashboard!");
+
+        if (redirect) {
+          navigate(redirect);
+          setRedirect(null);
+          return;
+        }
+
         navigate("/dashboard");
-        toast.success("Welcome to dashboard");
       } else {
         toast.error("Sorry bud, robots are not allowed here");
       }
@@ -42,8 +60,22 @@ export const RobotValidation: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex items-center justify-center mb-4 p-4 border border-gray-300 rounded-md">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col items-center"
+    >
+      {email ? (
+        <p className="mb-4 text-center text-slate-300">
+          Hi <strong>{email}</strong>,<br /> please let us know that you are not
+          a robot.
+        </p>
+      ) : (
+        <p className="mb-4 text-center text-slate-300">
+          Verify that you are not a robot
+        </p>
+      )}
+
+      <div className="w-full max-w-[230px] flex items-center justify-center mb-4 p-4 border border-gray-300 rounded-md">
         <input
           {...register("imNotARobot")}
           type="checkbox"
@@ -61,7 +93,7 @@ export const RobotValidation: React.FC = () => {
 
       <button
         type="submit"
-        className="w-full p-2 bg-slate-500 text-white rounded-md disabled:opacity-50"
+        className="w-full max-w-[230px] p-2 bg-slate-500 text-white rounded-md disabled:opacity-50"
         disabled={loading}
       >
         {loading ? "Verifying..." : "Verify"}
