@@ -1,7 +1,20 @@
-export default function Header() {
+import { Link } from "react-router-dom";
+
+export const Header = () => {
   return (
-    <h1 className="text-3xl text-center text-blue-700 font-bold mb-10">
-      <strong>gbLw1</strong> Github repos
-    </h1>
+    <div className="my-8 flex justify-between items-center">
+      <Link to="/" className="text-blue-700 font-bold text-lg">
+        <strong>gbLw1</strong> Github repos
+      </Link>
+
+      <div className="flex justify-center items-center">
+        <Link to="/login" className="text-blue-700">
+          Login
+        </Link>
+        <Link to="/form" className="text-blue-700 ml-5">
+          Form
+        </Link>
+      </div>
+    </div>
   );
-}
+};

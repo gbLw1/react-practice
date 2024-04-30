@@ -1,6 +1,16 @@
 # React good practices
 
+## About
+
 simple react app with good practices
+
+app pages:
+
+- Login
+  - multi step form
+- Dashboard
+  - private route
+  - url state management
 
 ## Table of Contents
 
@@ -12,6 +22,6 @@ simple react app with good practices
 - [x] URL state management with query params
 - [x] Multi step form with global state management using [Zustand](https://zustand-demo.pmnd.rs/)
 - [ ] HTTP State management with [React Query](https://tanstack.com/query/latest)
-- [ ] Private routes
+- [x] Private routes
 - [ ] Social login authentication
 

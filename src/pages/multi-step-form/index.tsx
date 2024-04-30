@@ -15,8 +15,6 @@ export default function MultiStepForm() {
 
   const { handleSubmit, register } = useForm<FormValues>();
 
-  console.log("rendered");
-
   return (
     <FormLayout>
       {step === 0 && (

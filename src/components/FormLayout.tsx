@@ -1,10 +1,10 @@
 import { useMultiStepFormStore } from "../stores/multi-step-form-store";
 
-interface Props {
+interface FormLayoutProps {
   children: React.ReactNode;
 }
 
-export default function FormLayout({ children }: Props) {
+const FormLayout: React.FC<FormLayoutProps> = ({ children }) => {
   const { name } = useMultiStepFormStore();
 
   return (
@@ -23,4 +23,6 @@ export default function FormLayout({ children }: Props) {
       </div>
     </div>
   );
-}
+};
+
+export default FormLayout;
