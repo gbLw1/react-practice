@@ -1,13 +1,5 @@
-import Layout from "../../components/Layout";
-import { Repos } from "./components/repos";
-import { Search } from "./components/search";
+import { Navigate } from "react-router-dom";
 
 export default function Home() {
-  return (
-    <Layout>
-      <Search />
-
-      <Repos />
-    </Layout>
-  );
+  return <Navigate to="/dashboard" replace />;
 }

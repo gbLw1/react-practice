@@ -8,9 +8,6 @@ export const Header = () => {
       </Link>
 
       <div className="flex justify-center items-center">
-        <Link to="/login" className="text-blue-700">
-          Login
-        </Link>
         <Link to="/form" className="text-blue-700 ml-5">
           Form
         </Link>

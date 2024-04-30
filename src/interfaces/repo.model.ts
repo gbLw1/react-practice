@@ -1,4 +1,4 @@
-export default interface RepoModel {
+export interface RepoModel {
   id: number;
   node_id: string;
   name: string;
