@@ -49,6 +49,8 @@ So far, the app has the following features:
 
 ## Learning process
 
+Here are some notes about the features implemented in this project
+
 ### Private Route
 
 The `PrivateRoute` component is a wrapper around the `Element` component that checks if the user is authenticated.
@@ -58,26 +60,38 @@ If the user is **not** authenticated, it redirects to the login page.
 ps: the `PrivateRoute` component also saves the current route in a global state,
 so after the user logs in, it redirects to the previous private route.
 
+---
+
 ### URL State Management
 
 The `useSearchParams` hook is a custom hook from `react-router-dom` that allows you to manage the URL state using query params.
+
+---
 
 ### Global State Management
 
 The global state is managed using Zustand.
 The `useStore` hook is a custom hook that allows you to access the global state.
 
+---
+
 ### Form Management & Validation
 
 The form state and validation are managed using `React Hook Form` and `Zod`.
+
+---
 
 ### HTTP Requests
 
 HTTP requests are made using Axios.
 
+---
+
 ### Styling
 
 The app is styled using Tailwind CSS and Flowbite React components.
+
+---
 
 ## Running the app
 
