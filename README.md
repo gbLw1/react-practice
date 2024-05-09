@@ -2,7 +2,7 @@
 
 ## About
 
-simple react app with good practices
+Simple react app with good practice and learning purposes.
 
 ### App pages:
 
@@ -16,25 +16,22 @@ simple react app with good practices
 
 ### Objectives:
 
-- Learn how to create a multi-step form
-- Learn how to manage form state and validation
-- Learn how to manage global state with Zustand
-- Learn how to manage URL state
-- Learn how to create a private route
+Learn how to:
+
+- Create a multi-step form
+- Manage form state and validation
+- Manage global state with Zustand
+- Manage URL state
+- Create a private route
   - Redirect to login page if user is not authenticated
   - Return to the previous private route after login
-- Learn how to use Axios for HTTP requests
-- Learn how to style your app with Tailwind CSS
-- Learn how to use Flowbite React components
-- Learn how to use React Query for HTTP state management
-- Learn how to use social login authentication
-- Learn how to use Zod for form validation
-- Learn how to use React Hook Form for form management
-
-So far, the app has the following features:
-
-- Login page with a multi-step form managed by URL state
-- Dashboard page with a private route
+- Use Axios for HTTP requests
+- Style your app with Tailwind CSS
+- Use Flowbite React components
+- Use React Query for HTTP state management
+- Use social login authentication
+- Use Zod for form validation
+- Use React Hook Form for form management
 
 ## Project progress
 
@@ -55,12 +52,14 @@ Here are some notes about the features implemented in this project
 
 ### Private Route
 
-The `PrivateRoute` component is a wrapper around the `Element` component that checks if the user is authenticated.
-If the user is authenticated, it renders the `Element` component.
-If the user is **not** authenticated, it redirects to the login page.
+The private route is implemented in `routes/private-route.tsx`.
 
-ps: the `PrivateRoute` component also saves the current route in a global state,
-so after the user logs in, it redirects to the previous private route.
+The `PrivateRoute` component is a wrapper around the `Element` component that checks if the user is authenticated.
+
+Logic:
+- If the user is authenticated, it renders the `Element` component.
+- If the user is **not** authenticated, it redirects to the login page.
+- The current route is saved in a global state, so after the user logs in, it redirects to the previous private route he was trying to access (if any).
 
 ---
 
