@@ -46,9 +46,13 @@ Learn how to:
 - [ ] HTTP State management with [React Query](https://tanstack.com/query/latest)
 - [ ] Social login authentication
 
-## Learning process
+## Notes
 
-Here are some notes about the features implemented in this project
+Here are some notes during the development of this project.
+
+Some details about the features implemented in this project and how they work.
+
+---
 
 ### Private Route
 
@@ -71,7 +75,8 @@ The `useSearchParams` hook is a custom hook from `react-router-dom` that allows 
 
 ### Global State Management
 
-The global state is managed using Zustand.
+The global state is managed using [Zustand](https://zustand-demo.pmnd.rs/).
+
 The `useStore` hook is a custom hook that allows you to access the global state.
 
 ---
