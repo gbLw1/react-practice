@@ -105,6 +105,11 @@ The `useForm` hook is a custom hook that allows you to manage the form state and
 e.g.
 
 ```typescript
+interface FormValues {
+    email: string
+    password: string
+}
+
 const {
     register,
     handleSubmit,
