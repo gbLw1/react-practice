@@ -12,6 +12,8 @@ simple react app with good practices
   - private route
   - url state management
 
+---
+
 ### Objectives:
 
 - Learn how to create a multi-step form
