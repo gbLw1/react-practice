@@ -52,7 +52,7 @@ Here are some notes about the features implemented in this project
 
 ### Private Route
 
-The private route is implemented in `routes/private-route.tsx`.
+The private route is implemented in [`routes/private-route.tsx`](src/routes/private-route.tsx).
 
 The `PrivateRoute` component is a wrapper around the `Element` component that checks if the user is authenticated.
 
